@@ -493,7 +493,7 @@ export default {
   background: transparent;
 }
 
-.glow:hover:before {
+.glow:before {
   opacity: 1;
 }
 
