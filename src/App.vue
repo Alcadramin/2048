@@ -1,17 +1,18 @@
 <template>
   <main>
     <div v-if="!message">
-      <Header />
+      <Header :score="score" />
     </div>
     <div class="d-flex-center" v-else>
       <div
-        class="animate__animated animate__fadeInUp message glow-on-hover"
-        :click="initBoard"
+        class="animate__animated animate__fadeInUp message glow"
+        @click.stop="initBoard()"
       >
         {{ message }}
       </div>
     </div>
-    <div class="score">{{ score }}</div>
+    <div class="score"><strong>Skor: </strong>{{ score }}</div>
+    <GameButtons :move="move" />
     <div v-if="board">
       <table>
         <tbody>
@@ -28,10 +29,11 @@ import { ref, onMounted } from "vue";
 import Row from "./components/Row.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import GameButtons from "./components/GameButtons.vue";
 
 export default {
   name: "App",
-  components: { Row, Header, Footer },
+  components: { Row, Header, Footer, GameButtons },
   setup() {
     const board = ref([
       [0, 0, 0, 0],
@@ -393,6 +395,7 @@ export default {
       score,
       message,
       initBoard,
+      move,
     };
   },
 };
@@ -418,7 +421,7 @@ export default {
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.glow-on-hover {
+.glow {
   text-transform: uppercase;
   padding: 0.5rem;
   border: none;
@@ -431,7 +434,7 @@ export default {
   border-radius: 10px;
 }
 
-.glow-on-hover:before {
+.glow:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -459,19 +462,19 @@ export default {
   border-radius: 10px;
 }
 
-.glow-on-hover:active {
+.glow:active {
   color: #000;
 }
 
-.glow-on-hover:active:after {
+.glow:active:after {
   background: transparent;
 }
 
-.glow-on-hover:hover:before {
+.glow:hover:before {
   opacity: 1;
 }
 
-.glow-on-hover:after {
+.glow:after {
   z-index: -1;
   content: "";
   position: absolute;
