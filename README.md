@@ -6,12 +6,15 @@
 
 <p align="center">
   <a href="https://i.imgur.com/iGiEPm5.png" target="_blank">
-    <img src="https://i.imgur.com/iGiEPm5.png" width="500px" height="auto">
+    <img src="https://i.imgur.com/iGiEPm5.png" width="500px" height="auto" />
   </a>
   <br />
   <br />
+  <img src="https://i.imgur.com/rcIbICT.png" />
+  <br />
+  <br />
   <a href="https://i.imgur.com/XrIA43h.png" target="_blank">
-    <img src="https://i.imgur.com/XrIA43h.png" width="500px" height="auto">
+    <img src="https://i.imgur.com/XrIA43h.png" width="500px" height="auto" />
   </a>
 </p>
 
