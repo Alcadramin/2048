@@ -5,7 +5,6 @@
         <Header />
       </div>
     </transition>
-
     <div class="d-flex-center" v-if="gameOver && message">
       <div
         class="animate__animated animate__fadeInUp message glow"
@@ -15,7 +14,6 @@
       </div>
     </div>
     <div class="score"><strong>Skor: </strong>{{ score }}</div>
-    <GameButtons :move="move" />
     <div v-if="board">
       <table>
         <tbody>
@@ -23,12 +21,15 @@
         </tbody>
       </table>
     </div>
+    <div :class="{ hide: !isMobile }">
+      <GameButtons :move="move" />
+    </div>
     <Footer />
   </main>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import Row from "./components/Row.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
@@ -47,6 +48,7 @@ export default {
     const score = ref(0);
     const gameOver = ref(false);
     const message = ref("");
+    const windowSize = ref(window.innerWidth);
 
     // Helpers
     const checkBoard = (original, update) =>
@@ -391,6 +393,9 @@ export default {
       initBoard();
       const body = document.querySelector("body");
       body.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("resize", () => {
+        windowSize.value = window.innerWidth;
+      });
     });
 
     return {
@@ -398,6 +403,7 @@ export default {
       score,
       gameOver,
       message,
+      isMobile: computed(() => windowSize.value <= 768),
       initBoard,
       move,
     };
@@ -407,6 +413,10 @@ export default {
 
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+.hide {
+  display: none;
+}
 
 .fade-enter-active,
 .fade-leave-active {
