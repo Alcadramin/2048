@@ -1,9 +1,12 @@
 <template>
   <main>
-    <div v-if="!message || score === 0">
-      <Header />
-    </div>
-    <div class="d-flex-center" v-else>
+    <transition name="fade">
+      <div v-if="!message && score === 0">
+        <Header />
+      </div>
+    </transition>
+
+    <div class="d-flex-center" v-if="gameOver && message">
       <div
         class="animate__animated animate__fadeInUp message glow"
         @click.stop="initBoard()"
@@ -393,6 +396,7 @@ export default {
     return {
       board,
       score,
+      gameOver,
       message,
       initBoard,
       move,
@@ -404,16 +408,25 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .score {
   text-align: center;
-  margin: 1rem 0.2rem;
+  margin: 2rem 0.2rem;
 }
 
 .message {
   font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
-  margin: 2rem 0.2rem;
+  margin: 1rem 0.2rem;
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

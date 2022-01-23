@@ -33,14 +33,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s;
 }
 
 .color-2 {
   background-color: #50c8ff;
+  transition: all 0.2s;
 }
 
 .color-4 {
   background-color: #b5bd68;
+  transition: all 0.2s;
 }
 
 .color-8 {
