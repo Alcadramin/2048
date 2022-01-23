@@ -1,7 +1,7 @@
 <template>
   <main>
-    <div v-if="!message">
-      <Header :score="score" />
+    <div v-if="!message || score === 0">
+      <Header />
     </div>
     <div class="d-flex-center" v-else>
       <div
