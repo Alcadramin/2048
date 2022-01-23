@@ -7,6 +7,7 @@ import eslintPlugin from "vite-plugin-eslint";
 export default defineConfig({
   plugins: [vue(), eslintPlugin()],
   server: {
+    host: true,
     port: 8080,
   },
   resolve: {

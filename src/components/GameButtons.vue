@@ -71,6 +71,8 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 .game-buttons {
+  position: relative;
+  top: -20px;
   margin: 1rem 0;
 
   .pulse {

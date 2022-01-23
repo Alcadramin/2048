@@ -24,7 +24,7 @@
     <div :class="{ hide: !isMobile }">
       <GameButtons :move="move" />
     </div>
-    <Footer />
+    <Footer :isMobile="isMobile" />
   </main>
 </template>
 
